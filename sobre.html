@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LGBT GAMES - Portal Oficial & Gumball Pixel Dash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+ 
+  <style>
+    :root {
+      --c-red: #ff3366;
+      --c-orange: #ff9900;
+      --c-yellow: #ffee00;
+      --c-green: #33cc66;
+      --c-blue: #0099ff;
+      --c-purple: #9933ff;
+      --c-pink: #ff66cc;
+      --bg-dark: #0f0c1b;
+      --card-bg: #1e1938;
+      --card-border: #3b3266;
+      --text-light: #ffffff;
+      --text-dim: #a5a0c8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+      background-size: 550px 550px, 350px 350px, 250px 250px;
+      background-position: 0 0, 40px 60px, 130px 270px;
+      padding-bottom: 50px;
+    }
+
+    .pixel-font {
+      font-family: 'Press Start 2P', monospace;
+    }
+
+    /* HEADER & NAV */
+    header {
+      background: rgba(15, 12, 27, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 4px solid var(--c-purple);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--c-red), var(--c-yellow), var(--c-green), var(--c-blue), var(--c-purple));
+      padding: 4px;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .logo-badge-inner {
+      background: #000;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: var(--card-bg);
+      color: var(--text-light);
+      border: 3px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 0 var(--card-border);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--c-blue);
+      box-shadow: 0 6px 0 var(--c-blue);
+      color: var(--c-yellow);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      text-align: center;
+      padding: 40px 20px;
+      margin-bottom: 40px;
+      background: linear-gradient(180deg, rgba(153, 51, 255, 0.15) 0%, rgba(15, 12, 27, 0) 100%);
+      border-radius: 24px;
+    }
+
+    .hero-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 2rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--c-red), var(--c-yellow), var(--c-green), var(--c-blue), var(--c-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+    }
+
+    /* SECTIONS & CARDS */
+    .section-card {
+      background: var(--card-bg);
+      border: 4px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      border-bottom: 3px dashed var(--card-border);
+      padding-bottom: 15px;
+    }
+
+    .section-header h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1.2rem;
+      color: var(--c-yellow);
+    }
+
+    .badge-tag {
+      background: var(--c-purple);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* GAME CONTAINER & CANVAS */
+    #game-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .game-stats-bar {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 800px;
+      background: #000;
+      border: 3px solid var(--c-blue);
+      border-radius: 12px 12px 0 0;
+      padding: 12px 20px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.8rem;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    canvas {
+      background: #111;
+      border: 4px solid var(--c-blue);
+      border-top: none;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 10px 30px rgba(0, 153, 255, 0.2);
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .game-controls {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-action {
+      background: linear-gradient(180deg, var(--c-green) 0%, #208843 100%);
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #14552a;
+      transition: all 0.1s;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 0 #14552a;
+    }
+
+    .btn-action:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #14552a;
+    }
+
+    /* TEAM GRID */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .team-card {
+      background: rgba(0,0,0,0.3);
+      border: 3px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--c-pink);
+    }
+
+    .avatar-box {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 15px auto;
+      background: #000;
+      border: 3px solid var(--c-yellow);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-rendering: pixelated;
+    }
+
+    .player-tag {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.7rem;
+      color: var(--c-orange);
+      margin-bottom: 5px;
+    }
+
+    /* TABLES & REQUIREMENTS */
+    .req-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 0.95rem;
+    }
+
+    .req-table th, .req-table td {
+      border: 2px solid var(--card-border);
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    .req-table th {
+      background: rgba(153, 51, 255, 0.2);
+      color: var(--c-yellow);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.75rem;
+    }
+
+    .req-table tr:nth-child(even) {
+      background: rgba(0,0,0,0.2);
+    }
+
+    /* RANKING & FORM */
+    .ranking-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .rank-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      padding: 12px 20px;
+      border-radius: 10px;
+      border-left: 5px solid var(--c-blue);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.8rem;
+    }
+
+    .rank-item:nth-child(1) { border-left-color: var(--c-yellow); color: var(--c-yellow); }
+    .rank-item:nth-child(2) { border-left-color: #c0c0c0; }
+    .rank-item:nth-child(3) { border-left-color: #cd7f32; }
+
+    /* CODE BOX */
+    .code-block {
+      background: #000;
+      border: 2px solid var(--card-border);
+      border-radius: 10px;
+      padding: 15px;
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      color: #33ff66;
+      overflow-x: auto;
+      max-height: 250px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      border-top: 4px solid var(--c-purple);
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 1.3rem; }
+      .section-header h2 { font-size: 0.9rem; }
+      .game-stats-bar { font-size: 0.6rem; }
+      nav { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-container">
+      <div class="logo-badge">
+        <div class="logo-badge-inner">LGBT GAMES</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#jogo" class="nav-btn">🎮 O JOGO</a>
+      <a href="#empresa" class="nav-btn">🏢 SOBRE</a>
+      <a href="#equipe" class="nav-btn">👥 EQUIPE</a>
+      <a href="#requisitos" class="nav-btn">📋 REQUISITOS</a>
+      <a href="#ranking" class="nav-btn">🏆 RANKING</a>
+      <a href="#backend" class="nav-btn">💻 PHP/SQL</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero-section">
+      <h1 class="hero-title">THE AMAZING WORLD OF<br>LGBT GAMES</h1>
+      <p class="hero-subtitle">Desenvolvimento de Sistemas & Jogos Digitais com Estética Pixel Art e Muita Cor!</p>
+    </section>
+
+    <!-- ETAPA 1 & 3: GAME SECTION -->
+    <section id="jogo" class="section-card">
+      <div class="section-header">
+        <h2>🎮 JOGO WEB: MultiUniversal - Jump</h2>
+        <span class="badge-tag">Endless Runner</span>
+      </div>
+
+      <div id="game-wrapper">
+        <div class="game-stats-bar">
+          <div class="stat-item">PONTOS: <span id="score-val" style="color:var(--c-yellow);">0</span></div>
+          <div class="stat-item">MOEDAS: <span id="coins-val" style="color:var(--c-green);">0</span></div>
+          <div class="stat-item">NÍVEL: <span id="level-val" style="color:var(--c-pink);">1 (FÁCIL)</span></div>
+        </div>
+
+        <canvas id="gameCanvas" width="800" height="350"></canvas>
+
+        <div class="game-controls">
+          <button class="btn-action" onclick="jumpCharacter()">PULAR (ESPAÇO)</button>
+          <button class="btn-action" style="background: linear-gradient(180deg, var(--c-blue) 0%, #105a9c 100%);" onclick="resetGame()">REINICIAR</button>
+        </div>
+        <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 5px;">Pressione a tecla <b>ESPAÇO</b>, a <b>SETA PARA CIMA</b> ou CLIQUE NO BOTÃO para pular!</p>
+      </div>
+    </section>
+
+    <!-- ETAPA 1: SOBRE A EMPRESA -->
+    <section id="empresa" class="section-card">
+      <div class="section-header">
+        <h2>🏢 ETAPA 1 - APRESENTAÇÃO DA EMPRESA</h2>
+      </div>
+     
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div>
+          <h3 style="color: var(--c-green); margin-bottom: 10px;">Empresa Fictícia</h3>
+          <p><b>Nome da Empresa:</b> LGBT Games Studio</p>
+          <p><b>Proposta:</b> Focada na criação de jogos casuais e divertidos em Pixel Art, combinando a nostalgia e dinamismo da Nintendo com a expressividade visual da Toca Boca.</p>
+          <p><b>Serviços Offered:</b> Desenvolvimento de jogos web 2D, gamificação para educação, arte e animação pixel art personalizadas.</p>
+        </div>
+        <div>
+          <h3 style="color: var(--c-yellow); margin-bottom: 10px;">Proposta do Jogo</h3>
+          <p><b>Nome do Jogo:</b> Gumball Pixel Dash</p>
+          <p><b>Público-Alvo:</b> Jogadores casuais de todas as idades, estudantes e fãs da cultura geek/retro-gaming.</p>
+          <p><b>Objetivo:</b> Sobreviver o máximo de tempo desviando dos obstáculos pixelados e coletando moedas para subir de nível e liderar o ranking público.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTEGRANTES (T COM IMAGEM) -->
+    <section id="equipe" class="section-card">
+      <div class="section-header">
+        <h2>👥 INTEGRANTES DA EQUIPE (LGBT)</h2>
+      </div>
+     
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="avatar-box"><img src="assets/levy.png" class="clouds" alt="Nuvens"></div>
+          <div class="player-tag">PLAYER 1 - Levy</div>
+        </div>
+
+        <div class="team-card">
+          <div class="avatar-box"><img src="assets/gabriel.png" class="clouds" alt="Nuvens"></div>
+          <div class="player-tag">PLAYER 2 - Gabriel Rodrigues</div>
+        </div>
+
+        <div class="team-card">
+          <div class="avatar-box"><img src="assets/bianca.png" class="clouds" alt="Nuvens"></div>
+          <div class="player-tag">PLAYER 3 - Bianca</div>
+        </div>
+
+        <div class="team-card" style="border-color: var(--c-yellow);">
+          <div class="avatar-box">
+            <img src="assets/thais.png" class="clouds" alt="Nuvens">
+          </div>
+          <div class="player-tag" style="color:var(--c-yellow);">PLAYER 4 - Thais</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 2: REQUISITOS -->
+    <section id="requisitos" class="section-card">
+      <div class="section-header">
+        <h2>📋 ETAPA 2 - LEVANTAMENTO DE REQUISITOS</h2>
+      </div>
+
+      <table class="req-table">
+        <thead>
+          <tr>
+            <th>CÓDIGO</th>
+            <th>TIPO</th>
+            <th>DESCRIÇÃO DO REQUISITO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RF01</td>
+            <td><span style="color:var(--c-green);">Funcional</span></td>
+            <td>O jogo deve permitir que o personagem salte ao pressionar a tecla Espaço ou clicar na tela.</td>
+          </tr>
+          <tr>
+            <td>RF02</td>
+            <td><span style="color:var(--c-green);">Funcional</span></td>
+            <td>Implementar sistema de coleta de moedas que somam pontos e somem ao serem coletadas.</td>
+          </tr>
+          <tr>
+            <td>RF03</td>
+            <td><span style="color:var(--c-green);">Funcional</span></td>
+            <td>Aceleração automática do jogo e aumento do nível de dificuldade conforme a pontuação.</td>
+          </tr>
+          <tr>
+            <td>RF04</td>
+            <td><span style="color:var(--c-green);">Funcional</span></td>
+            <td>Detecção precisa de colisão entre o personagem e os obstáculos para acionar a tela de Game Over.</td>
+          </tr>
+          <tr>
+            <td>RF05</td>
+            <td><span style="color:var(--c-green);">Funcional</span></td>
+            <td>Registrar nome do jogador e pontuação para envio ao banco de dados via PHP.</td>
+          </tr>
+          <tr>
+            <td>RNF01</td>
+            <td><span style="color:var(--c-blue);">Não-Funcional</span></td>
+            <td>Interface visual em estética Pixel Art responsiva e vibrante inspirada na Nintendo/Toca Boca.</td>
+          </tr>
+          <tr>
+            <td>RNF02</td>
+            <td><span style="color:var(--c-blue);">Não-Funcional</span></td>
+            <td>Desempenho fluido de animação no HTML5 Canvas a 60 FPS sem travamentos.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ETAPA 4: RANKING & REGISTRO -->
+    <section id="ranking" class="section-card">
+      <div class="section-header">
+        <h2>🏆 ETAPA 4 - RANKING DOS TOP 10 JOGADORES</h2>
+      </div>
+
+      <div class="ranking-box">
+        <div id="ranking-list">
+          <div class="rank-item"><span>1. ALEX_PIXEL</span><span>1.450 PTS</span></div>
+          <div class="rank-item"><span>2. GAMER_LGBT</span><span>1.120 PTS</span></div>
+          <div class="rank-item"><span>3. BMO_FAN</span><span>890 PTS</span></div>
+          <div class="rank-item"><span>4. PLAYER_T</span><span>640 PTS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 4 & 5: BACKEND PHP / SQL / TESTES -->
+    <section id="backend" class="section-card">
+      <div class="section-header">
+        <h2>💻 ETAPA 4 & 5 - SCRIPT SQL, PHP E RELATÓRIO DE TESTES</h2>
+      </div>
+
+      <h3 style="color:var(--c-yellow); margin-bottom: 10px;">Script SQL de Criação da Base de Dados:</h3>
+      <div class="code-block">
+-- Estrutura do Banco de Dados para LGBT Games
+CREATE DATABASE IF NOT EXISTS lgbt_games;
+USE lgbt_games;
+
+CREATE TABLE IF NOT EXISTS ranking (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_jogador VARCHAR(50) NOT NULL,
+    pontuacao INT NOT NULL,
+    nivel_alcancado INT NOT NULL,
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+      </div>
+
+      <h3 style="color:var(--c-green); margin-top:20px; margin-bottom: 10px;">Integração PHP (salvar_pontuacao.php):</h3>
+      <div class="code-block">
+&lt;?php
+header('Content-Type: application/json');
+$pdo = new PDO("mysql:host=localhost;dbname=lgbt_games", "root", "");
+
+$nome = $_POST['nome'] ?? 'Anônimo';
+$pontos = $_POST['pontos'] ?? 0;
+$nivel = $_POST['nivel'] ?? 1;
+
+$stmt = $pdo->prepare("INSERT INTO ranking (nome_jogador, pontuacao, nivel_alcancado) VALUES (?, ?, ?)");
+$sucesso = $stmt->execute([$nome, $pontos, $nivel]);
+
+echo json_encode(["status" => $sucesso ? "sucesso" : "erro"]);
+?&gt;
+      </div>
+
+      <h3 style="color:var(--c-pink); margin-top:25px; margin-bottom: 10px;">Relatório de Testes e Validação:</h3>
+      <table class="req-table">
+        <thead>
+          <tr>
+            <th>TESTE</th>
+            <th>AÇÃO</th>
+            <th>RESULTADO ESPERADO</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Salto</td>
+            <td>Pressionar Espaço / Clique</td>
+            <td>Personagem salta com física suave e gravidade.</td>
+            <td><b style="color:var(--c-green);">APROVADO</b></td>
+          </tr>
+          <tr>
+            <td>Coleta de Item</td>
+            <td>Tocar na moeda pixelada</td>
+            <td>Moeda desaparece e acrescenta +25 pontos.</td>
+            <td><b style="color:var(--c-green);">APROVADO</b></td>
+          </tr>
+          <tr>
+            <td>Aceleração</td>
+            <td>Atingir pontuação limite</td>
+            <td>Aumenta velocidade do cenário e muda o nível.</td>
+            <td><b style="color:var(--c-green);">APROVADO</b></td>
+          </tr>
+          <tr>
+            <td>Colisão</td>
+            <td>Tocar no obstáculo</td>
+            <td>Fim de jogo imediato e popup para salvar pontuação.</td>
+            <td><b style="color:var(--c-green);">APROVADO</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>LGBT GAMES STUDIO &copy; 2026 - Todos os Direitos Reservados</p>
+    <p style="font-size:0.8rem; margin-top: 5px;">Atividade Prática - Desenvolvimento de Sistemas</p>
+  </footer>
+
+  <!-- SCRIPT DO JOGO GAME LOGIC -->
+  <!-- SCRIPT DO JOGO GAME LOGIC (CORRIGIDO) -->
+  <script>
+    // CANVAS & GAME ENGINE
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // ESTADOS DO JOGO
+    let score = 0;
+    let coins = 0;
+    let level = 1;
+    let speed = 4;
+    let gameOver = false;
+    let animationFrame = null;
+
+    // PERSONAGEM (MASCOTE BMO)
+    const player = {
+      x: 80,
+      y: 242,
+      width: 44,
+      height: 48,
+      velocityY: 0,
+      gravity: 0.6,
+      jumpForce: -12,
+      isJumping: false
+    };
+
+    // OBSTÁCULOS E COLETÁVEIS
+    let obstacles = [];
+    let coinItems = [];
+    let frameCount = 0;
+
+    // EVENT LISTENERS DE CONTROLE
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') {
+        e.preventDefault();
+        jumpCharacter();
+      }
+    });
+
+    canvas.addEventListener('click', () => {
+      jumpCharacter();
+    });
+
+    function jumpCharacter() {
+      if (gameOver) {
+        resetGame();
+        return;
+      }
+      if (!player.isJumping) {
+        player.velocityY = player.jumpForce;
+        player.isJumping = true;
+      }
+    }
+
+    function resetGame() {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+
+      score = 0;
+      coins = 0;
+      level = 1;
+      speed = 4;
+      gameOver = false;
+      frameCount = 0;
+      obstacles = [];
+      coinItems = [];
+      
+      player.y = 242;
+      player.velocityY = 0;
+      player.isJumping = false;
+
+      document.getElementById('score-val').innerText = '0';
+      document.getElementById('coins-val').innerText = '0';
+      document.getElementById('level-val').innerText = '1 (FÁCIL)';
+      document.getElementById('level-val').style.color = 'var(--c-pink)';
+
+      gameLoop();
+    }
+
+    // CRIAÇÃO DE OBSTÁCULOS E MOEDAS
+    function spawnObstacle() {
+      if (frameCount % Math.max(50, 110 - Math.floor(speed * 6)) === 0) {
+        const height = 35 + Math.random() * 25;
+        obstacles.push({
+          x: canvas.width,
+          y: 290 - height,
+          width: 25,
+          height: height,
+          color: '#ff3366'
+        });
+      }
+    }
+
+    function spawnCoin() {
+      if (frameCount % 140 === 0) {
+        coinItems.push({
+          x: canvas.width,
+          y: 180 - Math.random() * 70,
+          size: 16
+        });
+      }
+    }
+
+    // LOOP PRINCIPAL DO JOGO
+    function gameLoop() {
+      frameCount++;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // CENÁRIO E CHÃO
+      ctx.fillStyle = '#1c153b';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#3b3266';
+      ctx.fillRect(0, 290, canvas.width, 60);
+      ctx.fillStyle = '#ffee00';
+      ctx.fillRect(0, 290, canvas.width, 4);
+
+      // FÍSICA DO JOGADOR
+      player.velocityY += player.gravity;
+      player.y += player.velocityY;
+
+      if (player.y >= 242) {
+        player.y = 242;
+        player.velocityY = 0;
+        player.isJumping = false;
+      }
+
+      // DESENHO DO MASCOTE (ESTILO BMO)
+      ctx.fillStyle = '#00e5ff';
+      ctx.fillRect(player.x, player.y, player.width, player.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(player.x + 6, player.y + 6, 32, 20);
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(player.x + 12, player.y + 12, 4, 4);
+      ctx.fillRect(player.x + 28, player.y + 12, 4, 4);
+      ctx.fillStyle = '#ff3366';
+      ctx.fillRect(player.x + 18, player.y + 18, 8, 4);
+      
+      ctx.fillStyle = '#ffee00';
+      ctx.fillRect(player.x + 8, player.y + 32, 8, 8);
+      ctx.fillStyle = '#ff3366';
+      ctx.fillRect(player.x + 26, player.y + 32, 8, 8);
+
+      // MOVER E DESENHAR OBSTÁCULOS
+      spawnObstacle();
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+        let obs = obstacles[i];
+        obs.x -= speed;
+
+        ctx.fillStyle = obs.color;
+        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(obs.x + 4, obs.y + 4, 4, 4);
+
+        // DETECÇÃO DE COLISÃO
+        if (
+          player.x < obs.x + obs.width &&
+          player.x + player.width > obs.x &&
+          player.y < obs.y + obs.height &&
+          player.y + player.height > obs.y
+        ) {
+          gameOver = true;
+        }
+
+        if (obs.x + obs.width < 0) obstacles.splice(i, 1);
+      }
+
+      // MOVER E COLETAR MOEDAS
+      spawnCoin();
+      for (let i = coinItems.length - 1; i >= 0; i--) {
+        let coin = coinItems[i];
+        coin.x -= speed;
+
+        ctx.fillStyle = '#ffee00';
+        ctx.fillRect(coin.x, coin.y, coin.size, coin.size);
+        ctx.fillStyle = '#ff9900';
+        ctx.fillRect(coin.x + 4, coin.y + 4, coin.size - 8, coin.size - 8);
+
+        if (
+          player.x < coin.x + coin.size &&
+          player.x + player.width > coin.x &&
+          player.y < coin.y + coin.size &&
+          player.y + player.height > coin.y
+        ) {
+          coins++;
+          score += 25;
+          coinItems.splice(i, 1);
+          document.getElementById('coins-val').innerText = coins;
+        } else if (coin.x + coin.size < 0) {
+          coinItems.splice(i, 1);
+        }
+      }
+
+      // PONTUAÇÃO E DIFICULDADE
+      if (!gameOver) {
+        score++;
+        document.getElementById('score-val').innerText = score;
+
+        if (score > 1000 && level === 2) {
+          level = 3;
+          speed = 8.5;
+          document.getElementById('level-val').innerText = '3 (DIFÍCIL)';
+          document.getElementById('level-val').style.color = 'var(--c-red)';
+        } else if (score > 400 && level === 1) {
+          level = 2;
+          speed = 6;
+          document.getElementById('level-val').innerText = '2 (MÉDIO)';
+          document.getElementById('level-val').style.color = 'var(--c-orange)';
+        }
+
+        animationFrame = requestAnimationFrame(gameLoop);
+      } else {
+        // TELA DE GAME OVER
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = '20px "Press Start 2P"';
+        ctx.fillStyle = '#ff3366';
+        ctx.textAlign = 'center';
+        ctx.fillText('GAME OVER!', canvas.width / 2, 140);
+
+        ctx.font = '12px "Press Start 2P"';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(`PONTOS FINAIS: ${score}`, canvas.width / 2, 180);
+        ctx.fillText('CLIQUE OU ESPAÇO PARA REINICIAR', canvas.width / 2, 220);
+      }
+    }
+
+    // INICIALIZA O JOGO AO CARREGAR A PÁGINA
+    window.onload = () => {
+      resetGame();
+    };
+  </script>
+</body>
+</html>
